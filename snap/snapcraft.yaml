@@ -1,0 +1,27 @@
+name: wavemon-snap
+version: '0.0.1'
+summary: Wavemon is a wireless device monitoring application.
+description: |
+  wavemon is a wireless device monitoring application that allows you to watch
+  signal and noise levels, packet statistics, device configuration and network
+  parameters of your wireless network hardware. It should work (though with
+  varying features) with all devices supported by the Linux kernel.
+
+grade: devel # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+apps:
+  wavemon:
+    command: wavemon
+
+parts:
+  wavemon:
+    plugin: autotools
+    source: https://github.com/uoaerg/wavemon.git 
+    source-type: git
+    build-packages:
+     - pkg-config
+     - libncurses5-dev
+     - libnl-3-dev
+     - libnl-genl-3-dev
+
